@@ -27,7 +27,12 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'plugin:prettier/recommended',
   ],
-  ignorePatterns: ['dist', 'node_modules', '.eslintrc.cjs'],
+  ignorePatterns: [
+    'dist', 
+    'node_modules', 
+    '.eslintrc.cjs',
+    '*.config.*'
+  ],
   rules: {
     // rules for airbnb
     'no-console': 'warn',
@@ -49,11 +54,13 @@ module.exports = {
     'prettier/prettier': [
       'error',
       {
+        printWidth: 80,
         semi: true,
         tabWidth: 2,
         useTabs: false,
         endOfLine: 'auto',
         singleQuote: true,
+        arrowParens: 'always',
         plugins: ['prettier-plugin-tailwindcss'],
       },
     ],

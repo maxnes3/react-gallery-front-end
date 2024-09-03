@@ -1,16 +1,13 @@
 import axios from 'axios';
 import PaintingSearchDto from '../types/painting.search.dto';
 import PaintingDto from '../types/painting.dto';
+import UrlUtils from './url.utils';
 
 class PaintingService {
-  private readonly URL = `${import.meta.env.VITE_SERVER_URL}painting`;
-
-  private buildUrl(path: string): string {
-    return `${this.URL}${path}`;
-  }
+  private readonly URL = '/painting';
 
   async getAll(): Promise<PaintingDto[]> {
-    const response = await axios.get(this.buildUrl('/getall'));
+    const response = await axios.get(UrlUtils.buildUrl(this.URL, '/get'));
     return response.data;
   }
 
@@ -22,7 +19,7 @@ class PaintingService {
       toYear: dto.toYear ?? 'null',
     });
 
-    const response = await axios.get(this.buildUrl('/search'), {
+    const response = await axios.get(UrlUtils.buildUrl(this.URL, '/search'), {
       params: searchParams,
     });
 
