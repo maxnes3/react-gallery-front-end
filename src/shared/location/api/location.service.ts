@@ -1,6 +1,6 @@
 import axios from 'axios';
-import LocationDto from '../types/location.dto';
-import UrlUtils from './url.utils';
+import LocationDto from '../model/location.dto';
+import UrlUtils from '../../url.utils';
 
 class LocationService {
   private readonly URL = '/location';

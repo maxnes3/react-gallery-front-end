@@ -1,7 +1,7 @@
 import axios from 'axios';
-import PaintingSearchDto from '../types/painting.search.dto';
-import PaintingDto from '../types/painting.dto';
-import UrlUtils from './url.utils';
+import PaintingSearchDto from '../model/painting.search.dto';
+import PaintingDto from '../model/painting.dto';
+import UrlUtils from '../../url.utils';
 
 class PaintingService {
   private readonly URL = '/painting';
