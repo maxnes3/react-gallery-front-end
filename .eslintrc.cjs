@@ -35,7 +35,7 @@ module.exports = {
   ],
   rules: {
     // rules for airbnb
-    'no-console': 'warn',
+    'no-console': 'off',
     'eqeqeq': ['error', 'always'],
     'prefer-const': 'error',
     'react/react-in-jsx-scope': 'off',

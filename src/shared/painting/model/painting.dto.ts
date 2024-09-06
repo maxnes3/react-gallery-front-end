@@ -1,10 +1,8 @@
-import ArtistDto from '../../artist/model/artist.dto';
-import LocationDto from '../../location/model/location.dto';
-
 export default interface PaintingDto {
+  id?: string;
   title: string;
-  artist: ArtistDto;
-  location: LocationDto;
+  artist: string;
+  location: string;
   year: string;
   image: string;
 }

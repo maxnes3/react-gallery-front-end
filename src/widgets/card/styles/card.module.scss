@@ -1,0 +1,28 @@
+@import '../../../app/styles/variables';
+
+.card {
+    background-color: $secondary-black;
+    color: $secondary-gray;
+    padding: $spacer * 4;
+    border-radius: $spacer;
+    grid-column: span 4;
+  
+    img {
+      width: 100%;
+      height: auto;
+      border-bottom: 1px solid $primary-dark-gray;
+    }
+  
+    .title {
+      color: $primary-light-gray;
+      font-size: 1.2rem;
+      margin: $spacer * 2 0;
+      font-family: 'Cormorant SC', serif;
+    }
+  
+    .year {
+      color: $accent-gold;
+      font-size: 1rem;
+      font-family: 'Inter', sans-serif;
+    }
+}

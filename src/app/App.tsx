@@ -1,7 +1,12 @@
-import './App.css';
+import { Gallery } from '../widgets/gallery';
+import './styles/app.scss';
 
 function App() {
-  return <div>Текст</div>;
+  return (
+    <div className="container">
+      <Gallery />
+    </div>
+  );
 }
 
 export default App;
