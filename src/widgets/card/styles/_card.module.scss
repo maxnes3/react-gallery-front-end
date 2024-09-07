@@ -1,0 +1,40 @@
+@import '../../../app/styles/variables';
+
+.card {
+  position: relative;
+  color: $secondary-gray;
+  overflow: hidden;
+  @include grid-block;
+
+  img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease-out;
+  }
+
+  &:hover img {
+    transform: scale(1.05);
+  }
+
+  .subscription {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: $primary-black;
+    padding: $spacer * 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    border-left: 2px solid $accent-gold;
+  }
+
+  .title {
+    color: $primary-light-gray;
+    @include cormorant-font;
+  }
+
+  .year {
+    color: $accent-gold;
+    @include inter-font($size: 12px, $weight: 700);
+  }
+}

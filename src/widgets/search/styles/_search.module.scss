@@ -1,0 +1,15 @@
+@import '../../../app/styles/variables';
+
+.search {
+  @include grid;
+  padding: $spacer * 6 0;
+
+  .interaction {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: $spacer * 6;
+    @include grid-block($start: 9);
+  }
+}

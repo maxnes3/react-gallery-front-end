@@ -1,31 +1,101 @@
 @font-face {
-    font-family: 'Cormorant SC';
-    src: url('../fonts/CormorantSC/CormorantSC-Medium.ttf') format('truetype');
-    font-style: normal;
+  font-family: 'Cormorant SC';
+  src: url('../fonts/CormorantSC/CormorantSC-Medium.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 500;
 }
 
 @font-face {
-    font-family: 'Inter';
-    src: url('../fonts/Inter/Inter-Bold.otf') format('opentype');
-    font-style: normal;
+  font-family: 'Inter';
+  src: url('../fonts/Inter/Inter-Bold.otf') format('opentype');
+  font-style: normal;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('../fonts/Inter/Inter-Medium.otf') format('opentype');
+  font-style: normal;
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('../fonts/Inter/Inter-Light.otf') format('opentype');
+  font-style: normal;
+  font-weight: 300;
 }
 
 // Primary colors
+$primary-white: #FFFFFF;
 $primary-black: #121212;
 
 $primary-light-gray: #DEDEDE;
 $primary-dark-gray: #575757;
 
 // Secondary colors
+$secondary-white: #FCFCFC;
+
 $secondary-black: #1A1818;
+$secondary-black-hover: rgba(205, 205, 205, 0.05);
+
 $secondary-gray: #9C9C9C;
 
 // Accent colors
+$accent-red: #9B4B4B;
 $accent-gold: #AB8956;
 
+// Grid parameters
 $columns: 12;
+$column-block: 4;
 $gutter: 32px;
 $margin: 100px;
 $container-width: 1240px;
 
+// The spacer set is based on a minimum step of 4px
 $spacer: 4px;
+
+// Icons
+$icon-size: 20px;
+
+// Mixins
+@mixin grid {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  gap: $gutter;
+}
+
+@mixin grid-block($start: 0) {
+  @if $start != 0 {
+    grid-column: $start / span $column-block;
+  }
+  @if $start == 0 {
+    grid-column: span $column-block;
+  }
+}
+
+@mixin cormorant-font($size: 16px) {
+  font-family: 'Cormorant SC', serif;
+  text-transform: uppercase;
+  font-size: $size;
+}
+
+@mixin inter-font($size: 14px, $weight: 500) {
+  font-family: 'Inter', sans-serif;
+  font-weight: $weight;
+  font-size: $size;
+}
+
+@mixin icon {
+  width: $icon-size;
+  height: $icon-size;
+}
+
+// Classes
+.border-rounded {
+  border-radius: $spacer;
+}
+
+.border-circle {
+  border-radius: 50%;
+}

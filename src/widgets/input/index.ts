@@ -1,2 +1,3 @@
 export { default as Input } from './components/input';
-export { default as styles } from './input.module.scss';
+export type { default as InputProps } from './types/input.types';
+export { default as styles } from './styles/_input.module.scss';

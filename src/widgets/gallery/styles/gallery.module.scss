@@ -1,7 +1,0 @@
-@import '../../../app/styles/variables';
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat($columns, 1fr);
-    gap: $gutter;
-  }

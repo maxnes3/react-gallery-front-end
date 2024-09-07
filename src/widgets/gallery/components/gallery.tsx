@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { PaintingDto, paintingService } from '../../../shared/painting';
 import { Card } from '../../card';
+import '../styles/_gallery.module.scss';
 
 function Gallery() {
   const { data, error, isLoading } = useQuery({
@@ -17,7 +18,7 @@ function Gallery() {
   }
 
   return (
-    <div className="grid">
+    <div className="gallery">
       {data?.map((painting: PaintingDto) => (
         <Card
           key={painting.id}

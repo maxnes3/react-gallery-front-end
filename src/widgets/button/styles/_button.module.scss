@@ -1,0 +1,31 @@
+@import '../../../app/styles/variables';
+
+@mixin button-standart {
+  border: none;
+  cursor: pointer;
+}
+
+.button-default {
+  background: transparent;
+  text-align: center;
+  @include button-standart;
+  @include inter-font($size: 12px, $weight: 700);
+}
+
+.button-icon {
+  background-color: $secondary-black;
+  min-width: $icon-size * 2;
+  min-height: $icon-size * 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include button-standart;
+
+  img {
+    @include icon;
+  }
+
+  &:hover {
+    background-color: $secondary-black-hover;
+  }
+}
