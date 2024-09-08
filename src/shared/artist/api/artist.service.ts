@@ -1,5 +1,5 @@
 import axios from 'axios';
-import ArtistDto from '../model/artist.dto';
+import ArtistDto from '../types/artist.dto';
 import UrlUtils from '../../url.utils';
 
 class ArtistService {

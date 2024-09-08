@@ -1,20 +1,16 @@
-import { useQuery } from '@tanstack/react-query';
-import { PaintingDto, paintingService } from '../../../shared/painting';
+import { PaintingDto, usePaintings } from '../../../shared/painting';
 import { Card } from '../../card';
 import '../styles/_gallery.module.scss';
 
 function Gallery() {
-  const { data, error, isLoading } = useQuery({
-    queryKey: ['paintings'],
-    queryFn: paintingService.getAll,
-  });
+  const { data, error, isLoading } = usePaintings(1);
 
   if (isLoading) {
     return <div>Loading...</div>;
   }
 
   if (error) {
-    return <div>Error: {error.message}</div>;
+    return <div className="error">Error: {error.message}</div>;
   }
 
   return (

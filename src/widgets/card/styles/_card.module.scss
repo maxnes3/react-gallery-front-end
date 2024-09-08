@@ -3,6 +3,7 @@
 .card {
   position: relative;
   color: $secondary-gray;
+  cursor: pointer;
   overflow: hidden;
   @include grid-block;
 
@@ -26,15 +27,31 @@
     flex-direction: column;
     justify-content: flex-end;
     border-left: 2px solid $accent-gold;
-  }
 
-  .title {
-    color: $primary-light-gray;
-    @include cormorant-font;
-  }
-
-  .year {
-    color: $accent-gold;
-    @include inter-font($size: 12px, $weight: 700);
+    .title {
+      color: $primary-light-gray;
+      @each $breakpoint, $settings in $grid {
+        @include breakpoint($breakpoint) {
+          $size: 16px;
+          @if $breakpoint == xs {
+            $size: 12px;
+          }
+          @include cormorant-font($size);
+        }
+      }
+    }
+  
+    .year {
+      color: $accent-gold;
+      @each $breakpoint, $settings in $grid {
+        @include breakpoint($breakpoint) {
+          $size: 12px;
+          @if $breakpoint == xs {
+            $size: 8px;
+          }
+          @include inter-font($size, 700);
+        }
+      }
+    }
   }
 }

@@ -1,13 +1,18 @@
 import axios from 'axios';
-import PaintingSearchDto from '../model/painting.search.dto';
-import PaintingDto from '../model/painting.dto';
+import PaintingSearchDto from '../types/painting.search.dto';
+import PaintingDto from '../types/painting.dto';
 
 class PaintingService {
   // eslint-disable-next-line class-methods-use-this
-  async getAll(): Promise<PaintingDto[]> {
+  async getAll(page: number = 1): Promise<PaintingDto[]> {
     try {
       const response = await axios.get(
         `${import.meta.env.VITE_SERVER_URL}/painting/get`,
+        {
+          params: {
+            page,
+          },
+        },
       );
       return response.data;
     } catch (error) {

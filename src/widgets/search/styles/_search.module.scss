@@ -1,8 +1,15 @@
 @import '../../../app/styles/variables';
 
+$start-column: (
+  xxl: 9,
+  xl: 9,
+  md: 5,
+  xs: 1
+);
+
 .search {
-  @include grid;
   padding: $spacer * 6 0;
+  @include grid;
 
   .interaction {
     display: flex;
@@ -10,6 +17,10 @@
     align-items: center;
     justify-content: flex-end;
     gap: $spacer * 6;
-    @include grid-block($start: 9);
+    @each $breakpoint, $settings in $grid {
+      @include breakpoint($breakpoint) {
+        @include grid-block($start: map-get($start-column, $breakpoint));
+      }
+    }
   }
 }

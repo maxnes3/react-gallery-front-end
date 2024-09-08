@@ -61,7 +61,7 @@ module.exports = {
         endOfLine: 'auto',
         singleQuote: true,
         arrowParens: 'always',
-        plugins: ['prettier-plugin-tailwindcss'],
+        plugins: [],
       },
     ],
   },

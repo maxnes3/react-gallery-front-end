@@ -5,6 +5,8 @@
 @import '../../widgets/search/styles/search.module';
 @import '../../widgets/button/styles/button.module';
 @import '../../widgets/input/styles/input.module';
+@import '../../widgets/filter/styles/filter.module';
+@import '../../widgets/pagination/styles/pagination.module';
 
 body {
   background-color: $primary-black;
@@ -12,7 +14,12 @@ body {
 }
 
 .container {
-  max-width: $container-width;
-  margin: 0 auto;
-  padding: 0 $margin;
+  position: relative;
+  @each $breakpoint in (xxl, xl, md, xs) {
+    @include breakpoint($breakpoint) {
+      max-width: map-get(map-get($grid, $breakpoint), container);
+      padding: 0 map-get(map-get($grid, $breakpoint), margin);
+      margin: 0 auto;
+    }
+  }
 }

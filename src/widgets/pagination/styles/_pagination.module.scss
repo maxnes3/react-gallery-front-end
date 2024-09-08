@@ -1,0 +1,8 @@
+@import '../../../app/styles/variables';
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacer * 6 0;
+}
