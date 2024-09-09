@@ -1,6 +1,6 @@
 import PaintingDto from './painting.dto';
 
-export default interface PaintingsResponse {
+export default interface PaintingsResponseDto {
   paintings: PaintingDto[];
   totalPages: number;
 }

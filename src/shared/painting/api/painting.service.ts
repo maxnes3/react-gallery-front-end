@@ -1,12 +1,12 @@
 import axios from 'axios';
 import PaintingSearchDto from '../types/painting.search.dto';
-import PaintingsResponse from '../types/painting.response';
+import PaintingsResponseDto from '../types/painting.response.dto';
 
 class PaintingService {
   private readonly URL = `${import.meta.env.VITE_SERVER_URL}/painting`;
 
   getAll(page: number = 1) {
-    return axios.get<PaintingsResponse>(`${this.URL}/get`, {
+    return axios.get<PaintingsResponseDto>(`${this.URL}/get`, {
       params: {
         page,
       },
@@ -21,7 +21,7 @@ class PaintingService {
       toYear: dto.toYear?.toString() ?? 'null',
     });
 
-    return axios.get<PaintingsResponse>(`${this.URL}/search`, {
+    return axios.get<PaintingsResponseDto>(`${this.URL}/search`, {
       params: searchParams,
     });
   }
