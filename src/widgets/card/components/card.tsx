@@ -6,10 +6,13 @@ function Card({ image, title, year, artist, location }: PaintingDto) {
 
   return (
     <div className="card">
-      <img src={imageUrl} alt={title} />
-      <div className="subscription">
-        <div className="title">{title}</div>
-        <div className="year">{year}</div>
+      <img src={imageUrl} alt={title} className="image" />
+      <div className="interaction">
+        <div className="subscription">
+          <div className="title">{title}</div>
+          <div className="year">{year}</div>
+        </div>
+        <img src="/arrow.icon.svg" alt="Arrow Icon" className="icon" />
       </div>
     </div>
   );

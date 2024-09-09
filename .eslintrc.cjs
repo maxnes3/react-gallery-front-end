@@ -39,6 +39,7 @@ module.exports = {
     'eqeqeq': ['error', 'always'],
     'prefer-const': 'error',
     'react/react-in-jsx-scope': 'off',
+    'no-plusplus': 'off',
 
     // rules for airbnb-typescript
     '@typescript-eslint/lines-between-class-members': 'off',

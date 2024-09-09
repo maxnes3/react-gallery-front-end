@@ -1,8 +1,58 @@
 @import '../../../app/styles/variables';
 
+@mixin not-active {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
 .pagination {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: $spacer * 6 0;
+  gap: $spacer;
+
+  .page {
+    color: $primary-light-gray;
+    width: 27px;
+    height: 24px;
+    @include not-active;
+    @include inter-font($size: 16px, $weight: 300);
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .active {
+    background-color: $secondary-black;
+    border-radius: $spacer;
+    @include inter-font($size: 16px, $weight: 500);
+  }
+
+  .dots {
+    color: $primary-light-gray;
+    @include inter-font($size: 16px, $weight: 300);
+  }
+
+  .arrow {
+    width: 20px;
+    height: 20px;
+    @include not-active;
+
+    img {
+      width: 8px;
+      height: 12px;
+    }
+
+    &:hover {
+      background-color: $secondary-black;
+      border-radius: $spacer;
+    }
+  }
+
+  .invert {
+    transform: scale(-1, 1);
+  }
 }

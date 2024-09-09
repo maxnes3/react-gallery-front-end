@@ -1,13 +1,11 @@
 import axios from 'axios';
 import ArtistDto from '../types/artist.dto';
-import UrlUtils from '../../url.utils';
 
 class ArtistService {
-  private readonly URL = '/artist';
+  private readonly URL = `${import.meta.env.VITE_SERVER_URL}/artist`;
 
-  async getAll(): Promise<ArtistDto[]> {
-    const response = await axios.get(UrlUtils.buildUrl(this.URL, '/get'));
-    return response.data;
+  getAll() {
+    return axios.get<ArtistDto[]>(`${this.URL}/get`);
   }
 }
 

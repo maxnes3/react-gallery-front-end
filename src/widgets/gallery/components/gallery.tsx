@@ -1,16 +1,18 @@
-import { PaintingDto, usePaintings } from '../../../shared/painting';
+import { useSelector } from 'react-redux';
+import {
+  PageStateType,
+  PaintingDto,
+  usePaintings,
+} from '../../../shared/painting';
 import { Card } from '../../card';
 import '../styles/_gallery.module.scss';
 
 function Gallery() {
-  const { data, error, isLoading } = usePaintings(1);
+  const currentPage = useSelector((state: PageStateType) => state.page.current);
+  const { data, isLoading } = usePaintings(currentPage);
 
   if (isLoading) {
     return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div className="error">Error: {error.message}</div>;
   }
 
   return (

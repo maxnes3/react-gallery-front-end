@@ -1,13 +1,11 @@
 import axios from 'axios';
 import LocationDto from '../types/location.dto';
-import UrlUtils from '../../url.utils';
 
 class LocationService {
-  private readonly URL = '/location';
+  private readonly URL = `${import.meta.env.VITE_SERVER_URL}/location`;
 
-  async getAll(): Promise<LocationDto[]> {
-    const response = await axios.get(UrlUtils.buildUrl(this.URL, '/get'));
-    return response.data;
+  getAll() {
+    return axios.get<LocationDto[]>(`${this.URL}/get`);
   }
 }
 

@@ -7,9 +7,15 @@
 
 .button-default {
   background: transparent;
+  color: $primary-white;
+  text-decoration: underline;
   text-align: center;
   @include button-standart;
   @include inter-font($size: 12px, $weight: 700);
+
+  &:hover {
+    color: $primary-light-gray;
+  }
 }
 
 .button-icon {
