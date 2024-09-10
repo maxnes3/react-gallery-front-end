@@ -1,5 +1,5 @@
 import '../styles/_button.module.scss';
-import { ButtonDefaultProps } from '../types/button.types';
+import { ButtonDefaultProps } from '../types/button.props';
 
 function ButtonDefault({ title, onClick }: ButtonDefaultProps) {
   return (

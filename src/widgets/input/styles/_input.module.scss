@@ -3,7 +3,6 @@
 .field {
   display: flex;
   align-items: center;
-  background-color: $secondary-black;
   width: 100%;
   height: 100%;
 
@@ -11,12 +10,24 @@
     outline: 1px solid $primary-light-gray;
   }
   
-  img {
+  .icon {
     margin: 0 $spacer * 4;
     @include icon;
   }
+
+  .cross {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    margin: 0 $spacer * 4;
+
+    img {
+      width: 8px;
+      height: 8px;
+    }
+  }
   
-  .input-field {
+  .input {
     background: transparent;
     border: none;
     color: $primary-white;
@@ -30,6 +41,6 @@
 
     &:focus {
       outline: none;
-    }   
+    }
   }
 }

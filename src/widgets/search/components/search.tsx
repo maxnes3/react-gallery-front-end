@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, useState } from 'react';
 import { Input } from '../../input';
 import { ButtonIcon, AngleRadius } from '../../button';
 import '../styles/_search.module.scss';
@@ -10,6 +10,10 @@ function Search() {
     event.preventDefault();
   };
 
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setTitle(e.target.value);
+  };
+
   return (
     <div className="search">
       <div className="interaction">
@@ -17,7 +21,7 @@ function Search() {
           imageUrl="/dark/search.icon.svg"
           placeholder="Painting title"
           value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          onChange={handleChange}
         />
         <ButtonIcon
           imageUrl="/dark/filter.icon.svg"

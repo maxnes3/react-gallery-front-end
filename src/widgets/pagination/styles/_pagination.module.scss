@@ -14,7 +14,6 @@
   gap: $spacer;
 
   .page {
-    color: $primary-light-gray;
     width: 27px;
     height: 24px;
     @include not-active;
@@ -26,13 +25,11 @@
   }
 
   .active {
-    background-color: $secondary-black;
     border-radius: $spacer;
     @include inter-font($size: 16px, $weight: 500);
   }
 
   .dots {
-    color: $primary-light-gray;
     @include inter-font($size: 16px, $weight: 300);
   }
 

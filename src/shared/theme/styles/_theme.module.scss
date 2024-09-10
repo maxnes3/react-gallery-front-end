@@ -1,0 +1,57 @@
+@import '../../../app/styles/variables';
+
+.dark {
+  background-color: $primary-black;
+
+  .background {
+    &-primary { background-color: $primary-black; }
+    &-primary-gray { background-color: $primary-light-gray; }
+    &-secondary { 
+      background-color: $secondary-black;
+      &:hover {
+        background-color: $secondary-black-hover;
+      }
+    }
+    &-accent { background-color: $accent-gold; }
+  }
+  
+  .color {
+    &-primary { color: $primary-black; }
+    &-primary-gray { color: $primary-light-gray; }
+    &-primary-text { color: $primary-light-gray; }
+    &-secondary { color: $secondary-black; }
+    &-accent { color: $accent-gold; }
+  }
+
+  .border-left {
+    border-left: 2px solid $accent-gold;
+  }
+}
+
+.light {
+  background-color: $primary-white;
+
+  .background {
+    &-primary { background-color: $primary-white; }
+    &-primary-gray { background-color: $primary-dark-gray; }
+    &-secondary { 
+      background-color: $secondary-white;
+      &:hover {
+        background-color: $secondary-white-hover;
+      }
+    }
+    &-accent { background-color: $accent-red; }
+  }
+  
+  .color {
+    &-primary { color: $primary-white; }
+    &-primary-gray { color: $primary-dark-gray; }
+    &-primary-text { color: $primary-black; }
+    &-secondary { color: $secondary-white; }
+    &-accent { color: $accent-red; }
+  }
+
+  .border-left {
+    border-left: 2px solid $accent-red;
+  }
+}

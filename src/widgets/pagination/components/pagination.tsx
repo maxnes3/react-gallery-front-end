@@ -39,7 +39,7 @@ function Pagination() {
     return pageNumbers.map((page) => {
       if (page === '...') {
         return (
-          <span key={page} className="dots">
+          <span key={page} className="dots color-primary-gray">
             ...
           </span>
         );
@@ -49,7 +49,7 @@ function Pagination() {
           key={page}
           type="button"
           onClick={() => handlePageChange(Number(page))}
-          className={`page ${Number(page) === currentPage ? 'active' : ''}`}
+          className={`page color-primary-gray ${Number(page) === currentPage ? 'active background-secondary' : ''}`}
         >
           {page}
         </button>

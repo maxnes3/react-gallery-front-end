@@ -1,10 +1,22 @@
 @import '../../../app/styles/variables';
 
-$card-height: (
-  xxl: 260px,
-  xl: 260px,
-  md: 220px,
-  xs: 185px
+$height: (
+  xxl: (
+    card: 260px,
+    interaction: 82px,
+  ),
+  xl: (
+    card: 260px,
+    interaction: 82px,
+  ),
+  md: (
+    card: 220px,
+    interaction: 66px,
+  ),
+  xs: (
+    card: 185px,
+    interaction: 45px,
+  )
 );
 
 $visibility: (
@@ -16,20 +28,19 @@ $visibility: (
 
 .card {
   position: relative;
-  color: $secondary-gray;
   cursor: pointer;
   overflow: hidden;
+  @each $breakpoint, $settings in $grid {
+    @include breakpoint($breakpoint) {
+      height: map-get($height, $breakpoint, card);
+    }
+  }
   @include grid-block;
 
   .image {
     width: 100%;
     height: 100%;
     transition: transform 0.3s ease-out;
-    @each $breakpoint, $settings in $grid {
-      @include breakpoint($breakpoint) {
-        height: map-get($card-height, $breakpoint);
-      }
-    }
   }
 
   &:hover .image {
@@ -40,39 +51,43 @@ $visibility: (
     position: absolute;
     bottom: 0;
     left: 0;
-    background-color: $accent-gold;
     display: flex;
     flex-direction: row;
+    @each $breakpoint, $settings in $grid {
+      @include breakpoint($breakpoint) {
+        height: map-get($height, $breakpoint, interaction);
+      }
+    }
 
     .subscription {
-      background-color: $primary-black;
-      padding: $spacer * 4;
-      flex-direction: column;
-      justify-content: flex-end;
-      border-left: 2px solid $accent-gold;
+      padding: $spacer * 4 0;
 
-      .title {
-        color: $primary-light-gray;
-        @each $breakpoint, $settings in $grid {
-          @include breakpoint($breakpoint) {
-            $size: 16px;
-            @if $breakpoint == xs {
-              $size: 12px;
+      .block {
+        padding: 0 $spacer * 4;
+        flex-direction: column;
+
+        .title {
+          margin-bottom: $spacer * 2;
+          @each $breakpoint, $settings in $grid {
+            @include breakpoint($breakpoint) {
+              $size: 16px;
+              @if $breakpoint == xs {
+                $size: 12px;
+              }
+              @include cormorant-font($size);
             }
-            @include cormorant-font($size);
           }
         }
-      }
-    
-      .year {
-        color: $accent-gold;
-        @each $breakpoint, $settings in $grid {
-          @include breakpoint($breakpoint) {
-            $size: 12px;
-            @if $breakpoint == xs {
-              $size: 8px;
+      
+        .year {
+          @each $breakpoint, $settings in $grid {
+            @include breakpoint($breakpoint) {
+              $size: 12px;
+              @if $breakpoint == xs {
+                $size: 8px;
+              }
+              @include inter-font($size, 700);
             }
-            @include inter-font($size, 700);
           }
         }
       }
