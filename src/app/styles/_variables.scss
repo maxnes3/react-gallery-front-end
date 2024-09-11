@@ -97,13 +97,23 @@ $spacer: 4px;
 // Icons
 $icon-size: 20px;
 
-// Mixin breakpoint
+// Mixins for adaptive
 @mixin breakpoint($point) {
   $min-width: map-get($grid, $point, min);
   $max-width: map-get($grid, $point, max);
   
   @media (min-width: $min-width) and (max-width: $max-width) {
     @content;
+  }
+}
+
+@mixin set-adaptive($adaptive, $property: null, $attribute: null) {
+  @each $breakpoint, $settings in $adaptive {
+    @include breakpoint($breakpoint) {
+      @if $property and $attribute {
+        #{$property}: map-get($settings, $attribute);
+      }
+    }
   }
 }
 
@@ -114,10 +124,13 @@ $icon-size: 20px;
   @each $breakpoint, $settings in $grid {
     @include breakpoint($breakpoint) {
       grid-template-columns: repeat(map-get($settings, columns), 1fr);
-      grid-column-gap: map-get($settings, gap-column);
-      grid-row-gap: map-get($settings, gap-row);
     }
   }
+  // @include set-adaptive-dynamic($grid) {
+  //   grid-template-columns: repeat(map-get($settings, columns), 1fr);
+  // }
+  @include set-adaptive($grid, grid-column-gap, gap-column);
+  @include set-adaptive($grid, grid-row-gap, gap-row);
 }
 
 @mixin grid-block($start: 0, $span: 0) {

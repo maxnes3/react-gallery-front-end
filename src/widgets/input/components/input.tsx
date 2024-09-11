@@ -21,8 +21,12 @@ function Input({ imageUrl, placeholder, value, onChange }: InputProps) {
   };
 
   return (
-    <div className="field background-secondary border-rounded">
-      {imageUrl && <img src={imageUrl} alt="icon" className="icon" />}
+    <div className="field background-secondary outline-focus border-rounded">
+      {imageUrl && (
+        <svg className="icon color-primary-gray">
+          <use href={`${imageUrl}#icon`} />
+        </svg>
+      )}
       <input
         className="input color-primary-text"
         type="text"
@@ -32,7 +36,10 @@ function Input({ imageUrl, placeholder, value, onChange }: InputProps) {
       />
       {imageUrl && showClear && (
         <button type="button" className="cross" onClick={handleClear}>
-          <img src="/cross.small.icon.svg" alt="cross" />
+          {/* <img src="/cross.small.icon.svg" alt="cross" /> */}
+          <svg className="color-primary-gray">
+            <use href="/cross.small.icon.svg#icon" />
+          </svg>
         </button>
       )}
     </div>

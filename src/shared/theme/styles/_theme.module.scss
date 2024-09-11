@@ -1,57 +1,56 @@
 @import '../../../app/styles/variables';
 
-.dark {
-  background-color: $primary-black;
+@mixin background($primary, $primary-gray, $secondary, $secondary-hover, $accent) {
+  background-color: $primary;
 
   .background {
-    &-primary { background-color: $primary-black; }
-    &-primary-gray { background-color: $primary-light-gray; }
+    &-primary { background-color: $primary; }
+    &-primary-gray { background-color: $primary-gray; }
     &-secondary { 
-      background-color: $secondary-black;
-      &:hover {
-        background-color: $secondary-black-hover;
-      }
+      background-color: $secondary;
+      &:hover { background-color: $secondary-hover; }
     }
-    &-accent { background-color: $accent-gold; }
-  }
-  
-  .color {
-    &-primary { color: $primary-black; }
-    &-primary-gray { color: $primary-light-gray; }
-    &-primary-text { color: $primary-light-gray; }
-    &-secondary { color: $secondary-black; }
-    &-accent { color: $accent-gold; }
-  }
-
-  .border-left {
-    border-left: 2px solid $accent-gold;
+    &-accent { background-color: $accent; }
+    &-hover {
+      &:hover { background-color: $secondary; }
+    }
   }
 }
 
-.light {
-  background-color: $primary-white;
-
-  .background {
-    &-primary { background-color: $primary-white; }
-    &-primary-gray { background-color: $primary-dark-gray; }
-    &-secondary { 
-      background-color: $secondary-white;
-      &:hover {
-        background-color: $secondary-white-hover;
-      }
-    }
-    &-accent { background-color: $accent-red; }
-  }
-  
+@mixin color($primary, $primary-gray, $primary-text, $secondary, $accent) {
   .color {
-    &-primary { color: $primary-white; }
-    &-primary-gray { color: $primary-dark-gray; }
-    &-primary-text { color: $primary-black; }
-    &-secondary { color: $secondary-white; }
-    &-accent { color: $accent-red; }
+    &-primary { color: $primary; }
+    &-primary-gray { color: $primary-gray; }
+    &-primary-text { color: $primary-text; }
+    &-secondary { color: $secondary; }
+    &-accent { color: $accent; }
   }
+}
 
-  .border-left {
-    border-left: 2px solid $accent-red;
+@mixin outline-focus($outline-color) {
+  .outline-focus {
+    &:focus-within {
+      outline: 1px solid $outline-color;
+    }
   }
+}
+
+@mixin border-left($border-color) {
+  .border-left {
+    border-left: 2px solid $border-color;
+  }
+}
+
+.dark {
+  @include background($primary-black, $primary-light-gray, $secondary-black, $secondary-black-hover, $accent-gold);
+  @include color($primary-black, $primary-light-gray, $primary-light-gray, $secondary-black, $accent-gold);
+  @include outline-focus($primary-light-gray);
+  @include border-left($accent-gold);
+}
+
+.light {
+  @include background($primary-white, $primary-dark-gray, $secondary-white, $secondary-white-hover, $accent-red);
+  @include color($primary-white, $primary-dark-gray, $primary-black, $secondary-white, $accent-red);
+  @include outline-focus($primary-dark-gray);
+  @include border-left($accent-red);
 }

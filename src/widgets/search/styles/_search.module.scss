@@ -16,7 +16,7 @@ $start-column: (
     flex-direction: row;
     align-items: center;
     justify-content: flex-end;
-    gap: $spacer * 6;
+    gap: $spacer * 4;
     @each $breakpoint, $settings in $grid {
       @include breakpoint($breakpoint) {
         @include grid-block($start: map-get($start-column, $breakpoint));

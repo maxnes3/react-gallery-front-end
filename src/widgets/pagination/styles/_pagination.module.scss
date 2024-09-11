@@ -38,13 +38,12 @@
     height: 20px;
     @include not-active;
 
-    img {
+    svg {
       width: 8px;
       height: 12px;
     }
 
     &:hover {
-      background-color: $secondary-black;
       border-radius: $spacer;
     }
   }

@@ -62,17 +62,23 @@ function Pagination() {
       <button
         type="button"
         onClick={() => handlePageChange(currentPage - 1)}
-        className="arrow invert"
+        className="arrow background-hover invert"
       >
-        <img src="/arrow.page.icon.svg" alt="arrow.page" />
+        {/* <img src="/arrow.page.icon.svg" alt="arrow.page" /> */}
+        <svg className="color-primary-gray">
+          <use href="/arrow.page.icon.svg#icon" />
+        </svg>
       </button>
       {totalPages > 1 && renderPageNumbers()}
       <button
         type="button"
         onClick={() => handlePageChange(currentPage + 1)}
-        className="arrow"
+        className="arrow background-hover"
       >
-        <img src="/arrow.page.icon.svg" alt="arrow.page" />
+        {/* <img src="/arrow.page.icon.svg" alt="arrow.page" /> */}
+        <svg className="color-primary-gray">
+          <use href="/arrow.page.icon.svg#icon" />
+        </svg>
       </button>
     </div>
   );

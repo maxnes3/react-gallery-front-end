@@ -1,40 +1,41 @@
 @import '../../../app/styles/variables';
 
-$height: (
+$adaptive: (
   xxl: (
     card: 260px,
     interaction: 82px,
+    offset: $spacer * 4,
+    gap: $spacer * 2,
+    visibility: none,
   ),
   xl: (
     card: 260px,
     interaction: 82px,
+    offset: $spacer * 4,
+    gap: $spacer * 2,
+    visibility: none,
   ),
   md: (
     card: 220px,
     interaction: 66px,
+    offset: $spacer * 4,
+    gap: $spacer * 2,
+    visibility: inline,
   ),
   xs: (
     card: 185px,
     interaction: 45px,
+    offset: $spacer * 2,
+    gap: $spacer * 1,
+    visibility: inline,
   )
-);
-
-$visibility: (
-  xxl: none,
-  xl: none,
-  md: inline,
-  xs: inline
 );
 
 .card {
   position: relative;
   cursor: pointer;
   overflow: hidden;
-  @each $breakpoint, $settings in $grid {
-    @include breakpoint($breakpoint) {
-      height: map-get($height, $breakpoint, card);
-    }
-  }
+  @include set-adaptive($adaptive, height, card);
   @include grid-block;
 
   .image {
@@ -53,21 +54,28 @@ $visibility: (
     left: 0;
     display: flex;
     flex-direction: row;
-    @each $breakpoint, $settings in $grid {
-      @include breakpoint($breakpoint) {
-        height: map-get($height, $breakpoint, interaction);
-      }
-    }
+    @include set-adaptive($adaptive, height, interaction);
 
     .subscription {
-      padding: $spacer * 4 0;
+      width: 100%;
+      height: 100%;
+      @each $breakpoint, $settings in $grid {
+        @include breakpoint($breakpoint) {
+          padding: map-get($adaptive, $breakpoint, offset) 0;
+        }
+      }
 
       .block {
-        padding: 0 $spacer * 4;
+        display: flex;
         flex-direction: column;
+        @each $breakpoint, $settings in $grid {
+          @include breakpoint($breakpoint) {
+            padding: 0 map-get($adaptive, $breakpoint, offset);
+          }
+        }
+        @include set-adaptive($adaptive, gap, gap);
 
         .title {
-          margin-bottom: $spacer * 2;
           @each $breakpoint, $settings in $grid {
             @include breakpoint($breakpoint) {
               $size: 16px;
@@ -97,11 +105,7 @@ $visibility: (
       width: 16px;
       height: 16px;
       margin: auto $spacer * 2 auto 2px;
-      @each $breakpoint, $settings in $grid {
-        @include breakpoint($breakpoint) {
-          display: map-get($visibility, $breakpoint);
-        }
-      }
+      @include set-adaptive($adaptive, display, visibility);
     }
   }
 }

@@ -19,14 +19,8 @@
 }
 
 .button-icon {
-  min-width: $icon-size * 2;
-  min-height: $icon-size * 2;
   display: flex;
   justify-content: center;
   align-items: center;
   @include button-standart;
-
-  img {
-    @include icon;
-  }
 }

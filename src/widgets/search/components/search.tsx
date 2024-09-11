@@ -1,9 +1,10 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { Input } from '../../input';
-import { ButtonIcon, AngleRadius } from '../../button';
+import { ButtonIcon, AngleRadius, SizeParams } from '../../button';
 import '../styles/_search.module.scss';
 
 function Search() {
+  const iconSize: SizeParams = { width: 16, height: 14 };
   const [title, setTitle] = useState('');
 
   const handleFilter = (event: FormEvent) => {
@@ -18,15 +19,17 @@ function Search() {
     <div className="search">
       <div className="interaction">
         <Input
-          imageUrl="/dark/search.icon.svg"
+          imageUrl="/search.icon.svg"
           placeholder="Painting title"
           value={title}
           onChange={handleChange}
         />
         <ButtonIcon
-          imageUrl="/dark/filter.icon.svg"
+          imageUrl="/filter.icon.svg"
           radius={AngleRadius.rounded}
           onClick={handleFilter}
+          backgroundSize={36}
+          iconSize={iconSize}
         />
       </div>
     </div>
