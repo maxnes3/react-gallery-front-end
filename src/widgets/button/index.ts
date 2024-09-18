@@ -1,6 +1,6 @@
 export { default as ButtonDefault } from './components/button.defaut';
 export { default as ButtonIcon } from './components/button.icon';
-export { AngleRadius } from './types/button.props';
+export { AngleRadius, ButtonStatus } from './types/button.props';
 export type {
   ButtonIconProps,
   ButtonDefaultProps,

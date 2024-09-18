@@ -8,6 +8,8 @@
 @import '../../widgets/filter/styles/filter.module';
 @import '../../widgets/pagination/styles/pagination.module';
 @import '../../shared/theme/styles/theme.module';
+@import '../../shared/adaptive/styles/adaptive.module';
+@import '../../widgets/select/styles/select.module';
 
 body {
   background-color: $primary-black;
@@ -16,11 +18,16 @@ body {
 
 .container {
   position: relative;
-  @each $breakpoint in (xxl, xl, md, xs) {
-    @include breakpoint($breakpoint) {
-      max-width: map-get(map-get($grid, $breakpoint), container);
-      padding: 0 map-get(map-get($grid, $breakpoint), margin);
-      margin: 0 auto;
-    }
-  }
+  margin: 0 auto;
+  @include set-adaptive($grid, max-width, container);
+  @include set-adaptive($grid, padding-left, margin);
+  @include set-adaptive($grid, padding-right, margin);
+}
+
+.border-rounded {
+  border-radius: $spacer;
+}
+
+.border-circle {
+  border-radius: 50%;
 }

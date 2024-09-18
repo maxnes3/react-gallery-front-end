@@ -1,0 +1,71 @@
+@import '../../../app/styles/variables';
+
+// Mixins for adaptive
+@mixin breakpoint($point) {
+  $min-width: map-get($grid, $point, min);
+  $max-width: map-get($grid, $point, max);
+    
+  @media (min-width: $min-width) and (max-width: $max-width) {
+    @content;
+  }
+}
+  
+@mixin set-adaptive($adaptive, $property: null, $attribute: null) {
+  @each $breakpoint, $settings in $adaptive {
+    @include breakpoint($breakpoint) {
+      @if $property and $attribute {
+        #{$property}: map-get($settings, $attribute);
+      }
+    }
+  }
+}
+  
+@mixin set-adaptive-mixin($adaptive, $mixin: null, $attribute: null) {
+  @each $breakpoint, $settings in $adaptive {
+    @include breakpoint($breakpoint) {
+      $value: map-get($settings, $attribute);
+      @if $mixin == 'cormorant-font' {
+        @include cormorant-font($value);
+      }
+      @else if $mixin == 'inter-font' {
+        $size: map-get($value, size);
+        $weight: map-get($value, weight);
+        @include inter-font($size, $weight);
+      }
+      @else if $mixin == 'grid-block' {
+        @include grid-block($value);
+      }
+    }
+  }
+}
+  
+// Mixins for grid
+@mixin grid {
+  display: grid;
+
+  @each $breakpoint, $settings in $grid {
+    @include breakpoint($breakpoint) {
+      grid-template-columns: repeat(map-get($settings, columns), 1fr);
+    }
+  }
+  @include set-adaptive($grid, grid-column-gap, gap-column);
+  @include set-adaptive($grid, grid-row-gap, gap-row);
+}
+
+@mixin grid-block($start: 0, $span: 0) {
+  @each $breakpoint, $settings in $grid {
+    @include breakpoint($breakpoint) {
+      $columns-merge: map-get($settings, span);
+      @if $span != 0 {
+        $columns-merge: $span;
+      }
+
+      @if $start != 0 {
+        grid-column: $start / span $columns-merge;
+      }
+      @else {
+        grid-column: span $columns-merge;
+      }
+    }
+  }
+}

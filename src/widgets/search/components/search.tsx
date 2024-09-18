@@ -1,14 +1,18 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Input } from '../../input';
 import { ButtonIcon, AngleRadius, SizeParams } from '../../button';
 import '../styles/_search.module.scss';
+import { togglePanel } from '../../../shared/filter';
 
 function Search() {
   const iconSize: SizeParams = { width: 16, height: 14 };
+  const dispatch = useDispatch();
   const [title, setTitle] = useState('');
 
   const handleFilter = (event: FormEvent) => {
     event.preventDefault();
+    dispatch(togglePanel());
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {

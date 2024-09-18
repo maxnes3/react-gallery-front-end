@@ -60,7 +60,7 @@ $grid: (
     container: 1240px
   ),
   xl: (
-    max: 1439.99px,
+    max: 1439.98px,
     min: 1280px,
     columns: 12,
     span: 4,
@@ -70,7 +70,7 @@ $grid: (
     container: 1240px
   ),
   md: (
-    max: 1279.99px,
+    max: 1279.98px,
     min: 768px,
     columns: 8,
     span: 4,
@@ -80,7 +80,7 @@ $grid: (
     container: 728px
   ),
   xs: (
-    max: 767.99px,
+    max: 767.98px,
     min: 320px,
     columns: 6,
     span: 6,
@@ -96,60 +96,6 @@ $spacer: 4px;
 
 // Icons
 $icon-size: 20px;
-
-// Mixins for adaptive
-@mixin breakpoint($point) {
-  $min-width: map-get($grid, $point, min);
-  $max-width: map-get($grid, $point, max);
-  
-  @media (min-width: $min-width) and (max-width: $max-width) {
-    @content;
-  }
-}
-
-@mixin set-adaptive($adaptive, $property: null, $attribute: null) {
-  @each $breakpoint, $settings in $adaptive {
-    @include breakpoint($breakpoint) {
-      @if $property and $attribute {
-        #{$property}: map-get($settings, $attribute);
-      }
-    }
-  }
-}
-
-// Mixins for grid
-@mixin grid {
-  display: grid;
-
-  @each $breakpoint, $settings in $grid {
-    @include breakpoint($breakpoint) {
-      grid-template-columns: repeat(map-get($settings, columns), 1fr);
-    }
-  }
-  // @include set-adaptive-dynamic($grid) {
-  //   grid-template-columns: repeat(map-get($settings, columns), 1fr);
-  // }
-  @include set-adaptive($grid, grid-column-gap, gap-column);
-  @include set-adaptive($grid, grid-row-gap, gap-row);
-}
-
-@mixin grid-block($start: 0, $span: 0) {
-  @each $breakpoint, $settings in $grid {
-    @include breakpoint($breakpoint) {
-      $columns-merge: map-get($settings, span);
-      @if $span != 0 {
-        $columns-merge: $span;
-      }
-
-      @if $start != 0 {
-        grid-column: $start / span $columns-merge;
-      }
-      @else {
-        grid-column: span $columns-merge;
-      }
-    }
-  }
-}
 
 // Mixins for fonts
 @mixin cormorant-font($size: 16px) {
@@ -168,13 +114,4 @@ $icon-size: 20px;
 @mixin icon {
   width: $icon-size;
   height: $icon-size;
-}
-
-// Classes
-.border-rounded {
-  border-radius: $spacer;
-}
-
-.border-circle {
-  border-radius: 50%;
 }

@@ -5,6 +5,11 @@ export enum AngleRadius {
   circle = 'circle',
 }
 
+export enum ButtonStatus {
+  default = 'default',
+  disable = 'disable',
+}
+
 interface ButtonEvent {
   onClick: (e: FormEvent) => void;
 }
@@ -16,11 +21,12 @@ export interface SizeParams {
 
 export interface ButtonIconProps extends ButtonEvent {
   imageUrl: string;
-  radius: AngleRadius;
   backgroundSize: number;
   iconSize: SizeParams;
+  radius?: AngleRadius;
 }
 
 export interface ButtonDefaultProps extends ButtonEvent {
   title: string;
+  status: ButtonStatus;
 }

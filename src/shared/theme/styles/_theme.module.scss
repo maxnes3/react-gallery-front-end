@@ -14,6 +14,7 @@
     &-hover {
       &:hover { background-color: $secondary; }
     }
+    &-none { background: none; }
   }
 }
 
@@ -35,6 +36,16 @@
   }
 }
 
+@mixin button($default, $disable, $hover) {
+  .button {
+    &-default { 
+      color: $default;
+      &:hover { color: $hover; }
+    }
+    &-disable { color: $disable; }
+  }
+}
+
 @mixin border-left($border-color) {
   .border-left {
     border-left: 2px solid $border-color;
@@ -45,6 +56,7 @@
   @include background($primary-black, $primary-light-gray, $secondary-black, $secondary-black-hover, $accent-gold);
   @include color($primary-black, $primary-light-gray, $primary-light-gray, $secondary-black, $accent-gold);
   @include outline-focus($primary-light-gray);
+  @include button($primary-light-gray, $primary-dark-gray, $primary-white);
   @include border-left($accent-gold);
 }
 
@@ -52,5 +64,6 @@
   @include background($primary-white, $primary-dark-gray, $secondary-white, $secondary-white-hover, $accent-red);
   @include color($primary-white, $primary-dark-gray, $primary-black, $secondary-white, $accent-red);
   @include outline-focus($primary-dark-gray);
+  @include button($primary-dark-gray, $secondary-gray, $primary-black);
   @include border-left($accent-red);
 }

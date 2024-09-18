@@ -1,4 +1,5 @@
 @import '../../../app/styles/variables';
+@import '../../../shared/adaptive/styles/adaptive.module';
 
 $adaptive: (
   xxl: (
@@ -6,6 +7,8 @@ $adaptive: (
     interaction: 82px,
     offset: $spacer * 4,
     gap: $spacer * 2,
+    cormorant: 16px,
+    inter: (size: 12px, weight: 700),
     visibility: none,
   ),
   xl: (
@@ -13,6 +16,8 @@ $adaptive: (
     interaction: 82px,
     offset: $spacer * 4,
     gap: $spacer * 2,
+    cormorant: 16px,
+    inter: (size: 12px, weight: 700),
     visibility: none,
   ),
   md: (
@@ -20,6 +25,8 @@ $adaptive: (
     interaction: 66px,
     offset: $spacer * 4,
     gap: $spacer * 2,
+    cormorant: 16px,
+    inter: (size: 12px, weight: 700),
     visibility: inline,
   ),
   xs: (
@@ -27,6 +34,8 @@ $adaptive: (
     interaction: 45px,
     offset: $spacer * 2,
     gap: $spacer * 1,
+    cormorant: 12px,
+    inter: (size: 8px, weight: 700),
     visibility: inline,
   )
 );
@@ -59,44 +68,22 @@ $adaptive: (
     .subscription {
       width: 100%;
       height: 100%;
-      @each $breakpoint, $settings in $grid {
-        @include breakpoint($breakpoint) {
-          padding: map-get($adaptive, $breakpoint, offset) 0;
-        }
-      }
+      @include set-adaptive($adaptive, padding-top, offset);
+      @include set-adaptive($adaptive, padding-bottom, offset);
 
       .block {
         display: flex;
         flex-direction: column;
-        @each $breakpoint, $settings in $grid {
-          @include breakpoint($breakpoint) {
-            padding: 0 map-get($adaptive, $breakpoint, offset);
-          }
-        }
+        @include set-adaptive($adaptive, padding-right, offset);
+        @include set-adaptive($adaptive, padding-left, offset);
         @include set-adaptive($adaptive, gap, gap);
 
         .title {
-          @each $breakpoint, $settings in $grid {
-            @include breakpoint($breakpoint) {
-              $size: 16px;
-              @if $breakpoint == xs {
-                $size: 12px;
-              }
-              @include cormorant-font($size);
-            }
-          }
+          @include set-adaptive-mixin($adaptive, cormorant-font, cormorant);
         }
       
         .year {
-          @each $breakpoint, $settings in $grid {
-            @include breakpoint($breakpoint) {
-              $size: 12px;
-              @if $breakpoint == xs {
-                $size: 8px;
-              }
-              @include inter-font($size, 700);
-            }
-          }
+          @include set-adaptive-mixin($adaptive, inter-font, inter);
         }
       }
     }

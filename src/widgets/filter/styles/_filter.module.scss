@@ -1,6 +1,38 @@
 @import '../../../app/styles/variables';
+@import '../../../shared/adaptive/styles/adaptive.module';
+
+$adaptive: (
+  xxl: (start-column: 9),
+  xl: (start-column: 9),
+  md: (start-column: 5),
+  xs: (start-column: 1),
+);
 
 .filter {
-  display: flex;
-  flex-direction: column;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  right: 0%;
+  padding: inherit;
+  @include grid;
+
+  .panel {
+    height: 100vh;
+    padding: $spacer * 12 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    @include set-adaptive-mixin($adaptive, grid-block, start-column);
+
+    .cancel {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: $spacer * 18;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
 }

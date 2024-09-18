@@ -1,0 +1,28 @@
+@import '../../../app/styles/variables';
+@import '../../../shared/adaptive/styles/adaptive.module';
+
+$adaptive: (
+  xxl: (cormorant: 16px),
+  xl: (cormorant: 16px),
+  md: (cormorant: 16px),
+  xs: (cormorant: 16px),
+);
+
+.select {
+  display: flex;  
+
+  .interaction {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    .title {
+      @include set-adaptive-mixin($adaptive, cormorant-font, cormorant);
+    }
+  }
+
+  .collapse {
+
+  }
+}

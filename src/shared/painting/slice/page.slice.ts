@@ -1,16 +1,17 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
+import PageManager from '../utils/page.utils';
 
 const pageSlice = createSlice({
   name: 'page',
   initialState: {
-    current: 1,
+    current: PageManager.getCurrentPageFromUrl(),
     total: 1,
   },
   reducers: {
     setCurrentPage(state, action) {
       state.current = action.payload;
-      console.log(state.current);
+      PageManager.setPageInUrl(action.payload);
     },
     setTotalPages(state, action) {
       state.total = action.payload;

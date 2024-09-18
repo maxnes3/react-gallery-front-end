@@ -2,6 +2,7 @@ import { Gallery } from '../widgets/gallery';
 import { Header } from '../widgets/header';
 import { Search } from '../widgets/search';
 import { Pagination } from '../widgets/pagination';
+import { Filter } from '../widgets/filter';
 import './styles/app.scss';
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
       <Search />
       <Gallery />
       <Pagination />
+      <Filter />
     </div>
   );
 }
